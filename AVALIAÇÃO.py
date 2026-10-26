@@ -40,6 +40,22 @@ def classificar_pedido(subtotal):
     print("========== RESUMO DO PEDIDO ==========")
     print(f"Cliente: {cliente}")
 
+      print("\nItens válidos:")
+    if len(itens_validos) == 0:
+        print("  Nenhum item válido.")
+    for item in itens_validos:
+        print(f"  - {item['produto']} | quantidade: {item['quantidade']} | "
+              f"preço unitário: R$ {item['preco']:.2f} | "
+              f"subtotal: R$ {item['subtotal']:.2f}")
+
+    print("\nItens rejeitados:")
+    if len(itens_rejeitados) == 0:
+        print("  Nenhum item rejeitado.")
+    for item in itens_rejeitados:
+        print(f"  - {item['produto']} | motivo: {' e '.join(item['motivos'])}")
+
+    
+
     else:
         return "Pedido grande"
 
