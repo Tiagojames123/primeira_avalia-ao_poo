@@ -33,6 +33,13 @@ def classificar_pedido(subtotal):
         return "Pedido pequeno"
     elif subtotal <= 100:
         return "Pedido médio"
+
+    def exibir_resumo(cliente, itens_validos, itens_rejeitados, linhas_validas,
+                  total_unidades, subtotal, desconto, total, classificacao):
+    """Imprime o relatório completo do pedido."""
+    print("========== RESUMO DO PEDIDO ==========")
+    print(f"Cliente: {cliente}")
+
     else:
         return "Pedido grande"
 
