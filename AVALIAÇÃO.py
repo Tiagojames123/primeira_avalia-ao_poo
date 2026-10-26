@@ -65,7 +65,15 @@ def classificar_pedido(subtotal):
     print(f"Classificação: {classificacao}")
     print("======================================")
 
+def processar_pedido(nome, pedido, cardapio, cupom):
+    """Valida o pedido, acumula os valores e chama as demais funções."""
+    cupom = cupom.strip().lower()
 
+    itens_validos = []
+    itens_rejeitados = []
+    linhas_validas = 0
+    total_unidades = 0
+    subtotal_pedido = 0
     else:
         return "Pedido grande"
 
