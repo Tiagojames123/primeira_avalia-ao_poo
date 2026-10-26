@@ -54,7 +54,17 @@ def classificar_pedido(subtotal):
     for item in itens_rejeitados:
         print(f"  - {item['produto']} | motivo: {' e '.join(item['motivos'])}")
 
-    
+    print()
+    if linhas_validas == 0:
+        print("Pedido sem itens válidos")
+    print(f"Linhas válidas: {linhas_validas}")
+    print(f"Total de unidades: {total_unidades}")
+    print(f"Subtotal: R$ {subtotal:.2f}")
+    print(f"Desconto: R$ {desconto:.2f}")
+    print(f"Total: R$ {total:.2f}")
+    print(f"Classificação: {classificacao}")
+    print("======================================")
+
 
     else:
         return "Pedido grande"
