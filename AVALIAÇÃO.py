@@ -25,4 +25,15 @@ def calcular_desconto(subtotal, cupom):
  
     return subtotal * taxa
 
+def classificar_pedido(subtotal):
+    """Retorna a classificação do pedido com base no subtotal (sem desconto)."""
+    if subtotal == 0:
+        return "Pedido sem itens válidos"
+    elif subtotal <= 50:
+        return "Pedido pequeno"
+    elif subtotal <= 100:
+        return "Pedido médio"
+    else:
+        return "Pedido grande"
+
 
