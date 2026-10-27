@@ -74,7 +74,39 @@ def processar_pedido(nome, pedido, cardapio, cupom):
     linhas_validas = 0
     total_unidades = 0
     subtotal_pedido = 0
-    else:
-        return "Pedido grande"
+for linha in pedido:
+        produto = linha["produto"].strip().lower()
+        quantidade = linha["quantidade"]
+
+        if validar_item(produto, quantidade, cardapio):
+            preco = cardapio[produto] 
+            subtotal_item = calcular_subtotal(quantidade, preco)
+            itens_validos.append({
+                "produto": produto,
+                "quantidade": quantidade,
+                "preco": preco,
+                "subtotal": subtotal_item,
+            })
+            subtotal_pedido += subtotal_item
+            linhas_validas += 1
+            total_unidades += quantidade
+        else:
+            motivos = []
+            if produto not in cardapio:
+                motivos.append("produto inexistente")
+            if quantidade <= 0:
+                motivos.append("quantidade inválida")
+            itens_rejeitados.append({"produto": produto, "motivos": motivos})
+
+    desconto = calcular_desconto(subtotal_pedido, cupom)
+    total = subtotal_pedido - desconto
+    classificacao = classificar_pedido(subtotal_pedido)
+
+    exibir_resumo(nome, itens_validos, itens_rejeitados, linhas_validas,
+                  total_unidades, subtotal_pedido, desconto, total,
+                  classificacao)
+    
+    
+
 
 
